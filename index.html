@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Produtos naturais sustentáveis da Amazônia - Raízes da Amazônia">
+    <title>Raízes da Amazônia - Produtos Naturais</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            overflow-y: hidden;
+        }
+
+        body {
+            background-color: #f8faf7;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo {
+            text-align: center;
+            padding: 15px 20px 10px 20px;
+            background: linear-gradient(180deg, #ffffff 70%, #f8faf7 100%);
+            flex-shrink: 0;
+        }
+
+        .logo img {
+            max-width: 200px;
+            height: auto;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+        }
+
+        .store-name {
+            text-align: center;
+            font-size: clamp(1.75rem, 5vw, 2.25rem);
+            color: #1a4722;
+            margin: 5px 0 15px 0;
+            font-weight: 600;
+            padding: 0 5px;
+            flex-shrink: 0;
+        }
+
+        .products-title {
+            text-align: center;
+            color: #3d3d3d;
+            margin-bottom: 15px;
+            font-size: clamp(1.1rem, 3vw, 1.3rem);
+            font-weight: 500;
+            padding: 0 15px;
+            flex-shrink: 0;
+        }
+
+        .products-grid {
+            display: flex;
+            overflow-x: auto;
+            padding: 0 20px 25px;
+            gap: 20px;
+            -webkit-overflow-scrolling: touch;
+            scroll-snap-type: x mandatory;
+            flex: 1;
+            min-height: 0;
+        }
+
+        .product-card {
+            flex: 0 0 75vw;
+            background: white;
+            border-radius: 20px;
+            padding: 15px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+            min-height: 450px;
+            max-height: 450px;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease;
+            scroll-snap-align: start;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 15px;
+            border: 1px solid rgba(0,0,0,0.08);
+            cursor: pointer;
+        }
+
+        .product-title {
+            color: #2a5c34;
+            font-size: clamp(1rem, 4vw, 1.125rem);
+            font-weight: 600;
+            margin-top: auto;
+            padding: 0 10px;
+            text-align: center;
+        }
+
+        .whatsapp-button {
+            background-color: #25D366;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-size: 14px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 10px auto 0;
+            transition: background-color 0.3s ease;
+            width: max-content;
+        }
+
+        .whatsapp-button:hover {
+            background-color: #128C7E;
+        }
+
+        .whatsapp-button img {
+            width: 24px;
+            height: 24px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.95);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            position: relative;
+            background: white;
+            margin: 15px;
+            padding: 30px;
+            border-radius: 20px;
+            max-width: 600px;
+            width: 90%;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-image {
+            width: 100%;
+            max-height: 60vh;
+            object-fit: contain;
+            margin-bottom: 20px;
+            border-radius: 10px;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 1.75rem;
+            cursor: pointer;
+            color: #444;
+            transition: color 0.2s ease;
+            padding: 5px;
+            line-height: 1;
+        }
+
+        @media (min-width: 768px) {
+            .products-grid {
+                flex-wrap: wrap;
+                justify-content: center;
+                overflow-x: visible;
+                gap: 30px;
+                padding: 0 30px 25px;
+            }
+
+            .product-card {
+                flex: 0 0 calc(33.333% - 20px);
+                max-width: 350px;
+                min-height: 500px;
+                max-height: 500px;
+            }
+
+            .product-image {
+                height: 300px;
+            }
+        }
+
+        .products-grid::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .products-grid::-webkit-scrollbar-track {
+            background: #e8efe9;
+            border-radius: 4px;
+        }
+
+        .products-grid::-webkit-scrollbar-thumb {
+            background: #8ba98d;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="logo">
+        <img src="logo.png" alt="Raízes da Amazônia - Logo" width="200" height="80">
+    </div>
+    
+    <h1 class="store-name">Raízes da Amazônia</h1>
+    
+    <h2 class="products-title">Nossos Produtos Sustentáveis</h2>
+
+    <div class="products-grid" id="productsContainer">
+        <!-- Produtos gerados via JavaScript -->
+    </div>
+
+    <div class="modal" id="productModal" role="dialog" aria-modal="true" aria-labelledby="modalImage">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal()" aria-label="Fechar">&times;</button>
+            <img id="modalImage" class="modal-image" src="" alt="">
+            <p id="productDescription"></p>
+        </div>
+    </div>
+
+    <script>
+        const products = [
+            {
+                image: 'produto1.jpg',
+                alt: 'Castanha-do-Pará Orgânica em embalagem sustentável',
+                title: 'Castanha-do-Pará Orgânica',
+                description: 'Castanha-do-Pará 100% orgânica, colhida de forma sustentável na floresta amazônica. Rico em selênio e antioxidantes. Embalagem de 200g.'
+            },
+            {
+                image: 'produto2.jpg',
+                alt: 'Óleo de Andiroba puro em frasco escuro',
+                title: 'Óleo de Andiroba Puro',
+                description: 'Óleo vegetal extraído a frio, ideal para massagens e cuidados com a pele. Anti-inflamatório natural. Frasco com 120ml.'
+            },
+            {
+                image: 'produto3.jpg',
+                alt: 'Cupuaçu em pó em embalagem reciclável',
+                title: 'Cupuaçu em Pó Natural',
+                description: 'Pó de cupuaçu desidratado, sem adição de açúcares ou conservantes. Perfeito para vitaminas e receitas. Embalagem de 300g.'
+            }
+        ];
+
+        function renderProducts() {
+            const container = document.getElementById('productsContainer');
+            
+            products.forEach(product => {
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                card.innerHTML = `
+                    <img src="${product.image}"
+                         alt="${product.alt}"
+                         class="product-image"
+                         data-description="${product.description}"
+                         onclick="showProduct(this)"
+                         loading="eager"
+                         width="400"
+                         height="400">
+                    <h3 class="product-title">${product.title}</h3>
+                    <button class="whatsapp-button" onclick="sendWhatsapp('${product.title}')">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0Ij48cGF0aCBmaWxsPSIjZmZmIiBkPSJNMTcuNDcyIDE0LjM4OGMuODE2LS45OSAxLjMzOS0yLjA5MyAxLjY1OS0zLjM4OGgtMy40Njh2LTEuNDAyYzAtLjQxNi0uMzM3LS43NS0uNzUtLjc1cy0uNzUuMzM0LS43NS43NXYxLjQwMmgtMS40OTl2LTEuMzkzYzAtLjQxNi0uMzM3LS43NS0uNzUtLjc1cy0uNzUuMzM0LS43NS43NXYxLjM5M2gtMS40OHYtMS4zNzJjMC0uNDE3LS4zMzctLjc1LS43NS0uNzVzLS43NS4zMzMtLjc1Ljc1djEuMzcyaC0xLjQzOWMtLjM0OSAzLjM2OSAyLjE4NSA3LjEzNyA1LjI2MyA3LjEzNyAxLjkzOCAwIDMuMTI3LS44NDQgMy44MjctMS40NDRsLjA0Mi0uMDMyYy42NC0uNDg0IDEuMTQxLTEuMDY3IDEuNDE2LTEuNzE4ek0xMiAyNGMtNi42MjcgMC0xMi01LjM3My0xMi0xMiAwLTYuNjI4IDUuMzczLTEyIDEyLTEyczEyIDUuMzcyIDEyIDEyYzAgNi42MjctNS4zNzMgMTItMTIgMTJ6bTYuMzU4LTkuMjY5Yy0uODE3IDEuMjMxLTIuMDQzIDIuMDE5LTMuNTgyIDIuMDE5LTEuNjE4IDAtMi43NzItLjg0NC0zLjI0OC0xLjQ0NGwtLjA0MS0uMDMxYy0uNjI5LS40NzQtMS4xMjYtMS4wNTgtMS40MDEtMS43MTloLjAwMWMuMjg0LS45OS40NTYtMi4wNzUuNDU2LTMuMTU1IDAtNC4xNjMtMy4zODYtNy41LTcuNS03LjVzLTcuNSAzLjMzNy03LjUgNy41YzAgNC4xNjMgMy4zODYgNy41IDcuNSA3LjUgMS4xNDggMCAyLjI0OC0uMjczIDMuMjY2LS43ODNsLjE4OC0uMDkzYy42NTMuMjExIDEuMzM2LjMyNCAyLjAzMS4zMjQgNC40MTggMCA4LTMuNTgyIDgtOCAwLS42OTUtLjExMy0xLjM2OC0uMzI0LTIuMDIxbC4wOTMuMTg4Yy41MSAxLjAxOC43ODMgMi4xMTguNzgzIDMuMjY2IDAgNC40MTgtMy41ODIgOC04IDgtLjY4NSAwLTEuMzUyLS4xMS0yLjAwNS0uMzI0eiIvPjwvc3ZnPg==" 
+                             alt="Ícone WhatsApp">
+                        Comprar
+                    </button>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function sendWhatsapp(productName) {
+            const phone = '5592985127665'; // Número com código do país
+            const message = encodeURIComponent(`Olá, Raízes da Amazônia! Gostaria de comprar o produto: ${productName}`);
+            window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
+        }
+
+        function showProduct(element) {
+            const modal = document.getElementById('productModal');
+            const modalImage = document.getElementById('modalImage');
+            const description = document.getElementById('productDescription');
+            
+            modalImage.src = element.src;
+            modalImage.alt = element.alt;
+            description.textContent = element.dataset.description;
+            modal.style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('productModal').style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('productModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
+        });
+
+        document.addEventListener('DOMContentLoaded', renderProducts);
+    </script>
+</body>
+</html>
