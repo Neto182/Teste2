@@ -14,7 +14,7 @@
 
         html, body {
             height: 100%;
-            overflow-y: hidden;
+            overflow-y: auto;
         }
 
         body {
@@ -27,7 +27,7 @@
 
         .logo {
             text-align: center;
-            padding: 15px 20px 10px 20px;
+            padding: 15px 20px 5px 20px;
             background: linear-gradient(180deg, #ffffff 70%, #f8faf7 100%);
             flex-shrink: 0;
         }
@@ -42,7 +42,7 @@
             text-align: center;
             font-size: clamp(1.75rem, 5vw, 2.25rem);
             color: #1a4722;
-            margin: 5px 0 15px 0;
+            margin: 0 0 10px 0;
             font-weight: 600;
             padding: 0 5px;
             flex-shrink: 0;
@@ -66,26 +66,26 @@
             -webkit-overflow-scrolling: touch;
             scroll-snap-type: x mandatory;
             flex: 1;
-            min-height: 0;
+            min-height: min-content;
         }
 
         .product-card {
-            flex: 0 0 75vw;
+            flex: 0 0 85vw;
             background: white;
             border-radius: 20px;
             padding: 15px;
             box-shadow: 0 6px 15px rgba(0,0,0,0.08);
-            min-height: 450px;
-            max-height: 450px;
+            min-height: 400px;
             display: flex;
             flex-direction: column;
             transition: transform 0.3s ease;
             scroll-snap-align: start;
+            margin-bottom: 10px;
         }
 
         .product-image {
             width: 100%;
-            height: 250px;
+            height: 240px;
             object-fit: cover;
             border-radius: 15px;
             margin-bottom: 15px;
@@ -188,8 +188,7 @@
             .product-card {
                 flex: 0 0 calc(33.333% - 20px);
                 max-width: 350px;
-                min-height: 500px;
-                max-height: 500px;
+                min-height: 450px;
             }
 
             .product-image {
@@ -236,22 +235,22 @@
     <script>
         const products = [
             {
-                image: 'produto1.jpg',
-                alt: 'Castanha-do-Pará Orgânica em embalagem sustentável',
-                title: 'Castanha-do-Pará Orgânica',
-                description: 'Castanha-do-Pará 100% orgânica, colhida de forma sustentável na floresta amazônica. Rico em selênio e antioxidantes. Embalagem de 200g.'
+                image: 'produto1.png',
+                alt: 'Vela aromatica',
+                title: 'Vela aromática',
+                description: 'Vela aromática artesanal em formato de torta. Feita com cera de alta qualidade e essências naturais, emite uma fragrância suave e cria um ambiente acolhedor. Perfeita para decorar ou presentear, combina beleza e funcionalidade em um design encantador.'
             },
             {
                 image: 'produto2.jpg',
-                alt: 'Óleo de Andiroba puro em frasco escuro',
-                title: 'Óleo de Andiroba Puro',
-                description: 'Óleo vegetal extraído a frio, ideal para massagens e cuidados com a pele. Anti-inflamatório natural. Frasco com 120ml.'
+                alt: 'sabonete artesanal de aveia',
+                title: 'Sabonete artesanal de aveia',
+                description: 'Sabonete artesanal de aveia de 100g. Feito com ingredientes naturais, limpa e hidrata suavemente, ideal para peles sensíveis. A aveia acalma e revitaliza, deixando a pele macia. Perfeito para um banho relaxante e nutritivo..'
             },
             {
-                image: 'produto3.jpg',
-                alt: 'Cupuaçu em pó em embalagem reciclável',
-                title: 'Cupuaçu em Pó Natural',
-                description: 'Pó de cupuaçu desidratado, sem adição de açúcares ou conservantes. Perfeito para vitaminas e receitas. Embalagem de 300g.'
+                image: 'produto3.png',
+                alt: 'Sabonere artesanal de alecrim',
+                title: 'Sabonere artesanal de alecrim',
+                description: 'Sabonete artesanal de alecrim, feito com ingredientes naturais. O alecrim estimula e revitaliza a pele, enquanto sua fragrância fresca e herbácea proporciona uma experiência de banho energizante. Ideal para quem busca um toque de renovação no dia a dia.'
             }
         ];
 
@@ -282,7 +281,7 @@
         }
 
         function sendWhatsapp(productName) {
-            const phone = '5592985127665'; // Número com código do país
+            const phone = '5592985127665';
             const message = encodeURIComponent(`Olá, Raízes da Amazônia! Gostaria de comprar o produto: ${productName}`);
             window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
         }
