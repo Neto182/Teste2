@@ -2,129 +2,119 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="description" content="Produtos naturais sustentáveis da Amazônia - Raízes da Amazônia">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Raízes da Amazônia - Produtos Naturais</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,900;1,400;1,900&display=swap');
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-        }
-
-        html, body {
-            height: 100%;
-            overflow-y: auto;
+            font-family: 'Playfair Display', serif;
         }
 
         body {
-            background-color: #f8faf7;
-            font-family: 'Segoe UI', system-ui, sans-serif;
-            line-height: 1.6;
-            display: flex;
-            flex-direction: column;
+            background: url(https://images.unsplash.com/photo-1495195129352-aeb325a55b65?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1776&q=80);
+            background-size: cover;
+            background-position: right;
+            background-attachment: fixed;
         }
 
-        .logo {
+        #header {
+            margin: 20px;
             text-align: center;
-            padding: 15px 20px 5px 20px;
-            background: linear-gradient(180deg, #ffffff 70%, #f8faf7 100%);
-            flex-shrink: 0;
         }
 
-        .logo img {
-            max-width: 200px;
-            height: auto;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+        #header>h1 {
+            font-size: 3rem;
+            color: #2a5c34;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
         }
 
-        .store-name {
-            text-align: center;
-            font-size: clamp(1.75rem, 5vw, 2.25rem);
+        #header>p {
+            font-size: 1.5rem;
+            font-style: italic;
             color: #1a4722;
-            margin: 0 0 10px 0;
-            font-weight: 600;
-            padding: 0 5px;
-            flex-shrink: 0;
         }
 
-        .products-title {
-            text-align: center;
-            color: #3d3d3d;
-            margin-bottom: 15px;
-            font-size: clamp(1.1rem, 3vw, 1.3rem);
-            font-weight: 500;
-            padding: 0 15px;
-            flex-shrink: 0;
-        }
-
-        .products-grid {
+        .container {
+            width: 100vw;
             display: flex;
-            overflow-x: auto;
-            padding: 0 20px 25px;
-            gap: 20px;
-            -webkit-overflow-scrolling: touch;
-            scroll-snap-type: x mandatory;
-            flex: 1;
-            min-height: min-content;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            padding: 40px 20px;
         }
 
-        .product-card {
-            flex: 0 0 85vw;
-            background: white;
-            border-radius: 20px;
-            padding: 15px;
-            box-shadow: 0 6px 15px rgba(0,0,0,0.08);
-            min-height: 400px;
+        .card {
             display: flex;
             flex-direction: column;
-            transition: transform 0.3s ease;
-            scroll-snap-align: start;
-            margin-bottom: 10px;
+            width: 400px;
+            margin-bottom: 60px;
+            position: relative;
         }
 
-        .product-image {
-            width: 100%;
-            height: 240px;
-            object-fit: cover;
-            border-radius: 15px;
-            margin-bottom: 15px;
-            border: 1px solid rgba(0,0,0,0.08);
+        .card>div {
+            box-shadow: 0 15px 20px 0 rgba(0,0,0,0.5);
+        }
+
+        .card-image {
+            width: 400px;
+            height: 250px;
             cursor: pointer;
         }
 
-        .product-title {
-            color: #2a5c34;
-            font-size: clamp(1rem, 4vw, 1.125rem);
-            font-weight: 600;
-            margin-top: auto;
-            padding: 0 10px;
+        .card-image>img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .card-text {
+            margin: -30px auto;
+            margin-bottom: -50px;
+            height: 300px;
+            width: 300px;
+            background-color: #1D1C20;
+            color: #fff;
+            padding: 20px;
             text-align: center;
+        }
+
+        .card-category {
+            font-style: italic;
+            color: #8ba98d;
+        }
+
+        .card-title {
+            font-size: 2rem;
+            margin: 15px 0;
+            color: #f8faf7;
+        }
+
+        .card-body {
+            font-size: 1.1rem;
+            line-height: 1.4;
         }
 
         .whatsapp-button {
+            width: 100px;
+            height: 100px;
             background-color: #25D366;
-            color: white;
-            border: none;
-            padding: 12px 20px;
-            border-radius: 25px;
-            font-size: 14px;
-            cursor: pointer;
+            color: #fff;
+            margin-left: auto;
+            font-size: 1.2rem;
             display: flex;
+            justify-content: center;
             align-items: center;
-            gap: 8px;
-            margin: 10px auto 0;
-            transition: background-color 0.3s ease;
-            width: max-content;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: transform 0.3s ease;
         }
 
         .whatsapp-button:hover {
-            background-color: #128C7E;
-        }
-
-        .whatsapp-button img {
-            width: 24px;
-            height: 24px;
+            transform: scale(1.1);
         }
 
         .modal {
@@ -135,23 +125,19 @@
             width: 100%;
             height: 100%;
             background: rgba(0,0,0,0.95);
-            z-index: 1000;
             justify-content: center;
             align-items: center;
-            backdrop-filter: blur(5px);
+            z-index: 1000;
         }
 
         .modal-content {
-            position: relative;
             background: white;
-            margin: 15px;
             padding: 30px;
             border-radius: 20px;
             max-width: 600px;
             width: 90%;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            max-height: 90vh;
-            overflow-y: auto;
+            position: relative;
+            text-align: center;
         }
 
         .modal-image {
@@ -159,76 +145,33 @@
             max-height: 60vh;
             object-fit: contain;
             margin-bottom: 20px;
-            border-radius: 10px;
         }
 
         .close-btn {
             position: absolute;
             top: 15px;
             right: 15px;
-            background: none;
-            border: none;
-            font-size: 1.75rem;
+            font-size: 2rem;
             cursor: pointer;
-            color: #444;
-            transition: color 0.2s ease;
-            padding: 5px;
-            line-height: 1;
-        }
-
-        @media (min-width: 768px) {
-            .products-grid {
-                flex-wrap: wrap;
-                justify-content: center;
-                overflow-x: visible;
-                gap: 30px;
-                padding: 0 30px 25px;
-            }
-
-            .product-card {
-                flex: 0 0 calc(33.333% - 20px);
-                max-width: 350px;
-                min-height: 450px;
-            }
-
-            .product-image {
-                height: 300px;
-            }
-        }
-
-        .products-grid::-webkit-scrollbar {
-            height: 8px;
-        }
-
-        .products-grid::-webkit-scrollbar-track {
-            background: #e8efe9;
-            border-radius: 4px;
-        }
-
-        .products-grid::-webkit-scrollbar-thumb {
-            background: #8ba98d;
-            border-radius: 4px;
+            color: #1a4722;
         }
     </style>
 </head>
 <body>
-    <div class="logo">
-        <img src="logo.png" alt="Raízes da Amazônia - Logo" width="200" height="80">
-    </div>
-    
-    <h1 class="store-name">Raízes da Amazônia</h1>
-    
-    <h2 class="products-title">Nossos Produtos Sustentáveis</h2>
-
-    <div class="products-grid" id="productsContainer">
-        <!-- Produtos gerados via JavaScript -->
+    <div id="header">
+        <h1>Raízes da Amazônia</h1>
+        <p>Produtos Naturais Sustentáveis</p>
     </div>
 
-    <div class="modal" id="productModal" role="dialog" aria-modal="true" aria-labelledby="modalImage">
+    <div class="container" id="productsContainer">
+        <!-- Produtos serão inseridos via JavaScript -->
+    </div>
+
+    <div class="modal" id="productModal">
         <div class="modal-content">
-            <button class="close-btn" onclick="closeModal()" aria-label="Fechar">&times;</button>
-            <img id="modalImage" class="modal-image" src="" alt="">
-            <p id="productDescription"></p>
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <img id="modalImage" class="modal-image" alt="Visualização do produto">
+            <p id="productDescription" class="card-body"></p>
         </div>
     </div>
 
@@ -236,21 +179,24 @@
         const products = [
             {
                 image: 'produto1.png',
-                alt: 'Vela aromatica',
                 title: 'Vela aromática',
-                description: 'Vela aromática artesanal em formato de torta. Feita com cera de alta qualidade e essências naturais, emite uma fragrância suave e cria um ambiente acolhedor. Perfeita para decorar ou presentear, combina beleza e funcionalidade em um design encantador.'
+                category: 'Aromaterapia',
+                description: 'Vela aromática artesanal em formato de torta. Feita com cera de alta qualidade e essências naturais...',
+                price: 'R$ 56'
             },
             {
                 image: 'produto2.jpg',
-                alt: 'sabonete artesanal de aveia',
-                title: 'Sabonete artesanal de aveia',
-                description: 'Sabonete artesanal de aveia de 100g. Feito com ingredientes naturais, limpa e hidrata suavemente, ideal para peles sensíveis. A aveia acalma e revitaliza, deixando a pele macia. Perfeito para um banho relaxante e nutritivo..'
+                title: 'Sabonete de Aveia',
+                category: 'Cosméticos Naturais',
+                description: 'Sabonete artesanal de aveia de 100g. Feito com ingredientes naturais...',
+                price: 'R$ 39'
             },
             {
                 image: 'produto3.png',
-                alt: 'Sabonere artesanal de alecrim',
-                title: 'Sabonere artesanal de alecrim',
-                description: 'Sabonete artesanal de alecrim, feito com ingredientes naturais. O alecrim estimula e revitaliza a pele, enquanto sua fragrância fresca e herbácea proporciona uma experiência de banho energizante. Ideal para quem busca um toque de renovação no dia a dia.'
+                title: 'Sabonete de Alecrim',
+                category: 'Cosméticos Naturais',
+                description: 'Sabonete artesanal de alecrim, feito com ingredientes naturais...',
+                price: 'R$ 69'
             }
         ];
 
@@ -259,41 +205,30 @@
             
             products.forEach(product => {
                 const card = document.createElement('div');
-                card.className = 'product-card';
+                card.className = 'card';
                 card.innerHTML = `
-                    <img src="${product.image}"
-                         alt="${product.alt}"
-                         class="product-image"
-                         data-description="${product.description}"
-                         onclick="showProduct(this)"
-                         loading="eager"
-                         width="400"
-                         height="400">
-                    <h3 class="product-title">${product.title}</h3>
-                    <button class="whatsapp-button" onclick="sendWhatsapp('${product.title}')">
-                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0Ij48cGF0aCBmaWxsPSIjZmZmIiBkPSJNMTcuNDcyIDE0LjM4OGMuODE2LS45OSAxLjMzOS0yLjA5MyAxLjY1OS0zLjM4OGgtMy40Njh2LTEuNDAyYzAtLjQxNi0uMzM3LS43NS0uNzUtLjc1cy0uNzUuMzM0LS43NS43NXYxLjQwMmgtMS40OTl2LTEuMzkzYzAtLjQxNi0uMzM3LS43NS0uNzUtLjc1cy0uNzUuMzM0LS43NS43NXYxLjM5M2gtMS40OHYtMS4zNzJjMC0uNDE3LS4zMzctLjc1LS43NS0uNzVzLS43NS4zMzMtLjc1Ljc1djEuMzcyaC0xLjQzOWMtLjM0OSAzLjM2OSAyLjE4NSA3LjEzNyA1LjI2MyA3LjEzNyAxLjkzOCAwIDMuMTI3LS44NDQgMy44MjctMS40NDRsLjA0Mi0uMDMyYy42NC0uNDg0IDEuMTQxLTEuMDY3IDEuNDE2LTEuNzE4ek0xMiAyNGMtNi42MjcgMC0xMi01LjM3My0xMi0xMiAwLTYuNjI4IDUuMzczLTEyIDEyLTEyczEyIDUuMzcyIDEyIDEyYzAgNi42MjctNS4zNzMgMTItMTIgMTJ6bTYuMzU4LTkuMjY5Yy0uODE3IDEuMjMxLTIuMDQzIDIuMDE5LTMuNTgyIDIuMDE5LTEuNjE4IDAtMi43NzItLjg0NC0zLjI0OC0xLjQ0NGwtLjA0MS0uMDMxYy0uNjI5LS40NzQtMS4xMjYtMS4wNTgtMS40MDEtMS43MTloLjAwMWMuMjg0LS45OS40NTYtMi4wNzUuNDU2LTMuMTU1IDAtNC4xNjMtMy4zODYtNy41LTcuNS03LjVzLTcuNSAzLjMzNy03LjUgNy41YzAgNC4xNjMgMy4zODYgNy41IDcuNSA3LjUgMS4xNDggMCAyLjI0OC0uMjczIDMuMjY2LS43ODNsLjE4OC0uMDkzYy42NTMuMjExIDEuMzM2LjMyNCAyLjAzMS4zMjQgNC40MTggMCA4LTMuNTgyIDgtOCAwLS42OTUtLjExMy0xLjM2OC0uMzI0LTIuMDIxbC4wOTMuMTg4Yy41MSAxLjAxOC43ODMgMi4xMTguNzgzIDMuMjY2IDAgNC40MTgtMy41ODIgOC04IDgtLjY4NSAwLTEuMzUyLS4xMS0yLjAwNS0uMzI0eiIvPjwvc3ZnPg==" 
-                             alt="Ícone WhatsApp">
-                        Comprar
-                    </button>
+                    <div class="card-image">
+                        <img src="${product.image}" alt="${product.title}" onclick="showModal('${product.image}', '${product.description}')">
+                    </div>
+                    <div class="card-text">
+                        <p class="card-category">${product.category}</p>
+                        <h2 class="card-title">${product.title}</h2>
+                        <p class="card-body">${product.description}</p>
+                    </div>
+                    <a href="https://wa.me/5592985127665?text=Olá! Gostaria de comprar ${encodeURIComponent(product.title)}" 
+                       class="whatsapp-button"
+                       target="_blank">
+                        <img src="whatsapp-icon.svg" alt="WhatsApp" style="width: 40px;">
+                    </a>
                 `;
                 container.appendChild(card);
             });
         }
 
-        function sendWhatsapp(productName) {
-            const phone = '5592985127665';
-            const message = encodeURIComponent(`Olá, Raízes da Amazônia! Gostaria de comprar o produto: ${productName}`);
-            window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
-        }
-
-        function showProduct(element) {
+        function showModal(image, description) {
             const modal = document.getElementById('productModal');
-            const modalImage = document.getElementById('modalImage');
-            const description = document.getElementById('productDescription');
-            
-            modalImage.src = element.src;
-            modalImage.alt = element.alt;
-            description.textContent = element.dataset.description;
+            document.getElementById('modalImage').src = image;
+            document.getElementById('productDescription').textContent = description;
             modal.style.display = 'flex';
         }
 
@@ -303,16 +238,13 @@
 
         window.onclick = function(event) {
             const modal = document.getElementById('productModal');
-            if (event.target === modal) {
-                closeModal();
-            }
+            if (event.target === modal) closeModal();
         }
 
+        document.addEventListener('DOMContentLoaded', renderProducts);
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') closeModal();
         });
-
-        document.addEventListener('DOMContentLoaded', renderProducts);
     </script>
 </body>
 </html>
